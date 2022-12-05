@@ -1,6 +1,6 @@
 import pytest
 
-from delivery import Elf, Sleigh, ToyMachine
+from present_load import Elf, Sleigh, ToyMachine
 
 
 @pytest.mark.parametrize(
@@ -56,3 +56,7 @@ def test_elf_can_pack_present_into_santa_sleigh(present_to_pack):
     assert elf.carried_present is None
     assert len(sleigh.list_of_presents) == initial_length + 1
     assert present_to_pack in sleigh.list_of_presents
+
+
+def test_present_loading_process():
+    pass
