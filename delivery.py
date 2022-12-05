@@ -11,4 +11,4 @@ class ToyMachine:
 
 class Elf:
     def __init__(self):
-        self.current_present = "present"
+        self.current_present = None
