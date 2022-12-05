@@ -11,4 +11,13 @@ class ToyMachine:
 
 class Elf:
     def __init__(self):
+        self.current_present = None  # TODO: rename to carried_present
+
+    def pack_into(self, sleigh):
+        sleigh.list_of_presents.append(self.current_present)
         self.current_present = None
+
+
+class Sleigh:
+    def __init__(self):
+        self.list_of_presents = []
