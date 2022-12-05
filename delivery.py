@@ -2,13 +2,16 @@ class Sleigh:
     def __init__(self):
         self.list_of_presents = []
 
+    def add_present(self, present: str):
+        self.list_of_presents.append(present)
+
 
 class Elf:
     def __init__(self):
         self.carried_present = None
 
     def pack_into(self, sleigh: Sleigh):
-        sleigh.list_of_presents.append(self.carried_present)
+        sleigh.add_present(self.carried_present)
         self.carried_present = None
 
 
