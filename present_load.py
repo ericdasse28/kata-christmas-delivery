@@ -1,4 +1,5 @@
 class Sleigh:
+    # TODO: add a method has_present
     def __init__(self):
         self.list_of_presents = []
 
@@ -24,3 +25,11 @@ class ToyMachine:
 
     def give_present(self, elf: Elf):
         elf.carried_present = self.last_present_made
+
+
+def present_loading_process(toy_machine, elf, sleigh, santa_list):
+    for present in santa_list:
+        toy_machine.make_present(present)
+        toy_machine.give_present(elf)
+
+        elf.pack_into(sleigh)

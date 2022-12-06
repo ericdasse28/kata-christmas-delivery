@@ -1,6 +1,6 @@
 import pytest
 
-from present_load import Elf, Sleigh, ToyMachine
+from present_load import Elf, Sleigh, ToyMachine, present_loading_process
 
 
 @pytest.mark.parametrize(
@@ -58,5 +58,34 @@ def test_elf_can_pack_present_into_santa_sleigh(present_to_pack):
     assert present_to_pack in sleigh.list_of_presents
 
 
-def test_present_loading_process():
-    pass
+@pytest.mark.parametrize(
+    "santa_list",
+    [
+        (["Gameboy", "World Peace", "Jingle bells"]),
+        (["Gameboy", "World Peace", "Jingle bells", "Snowman"]),
+        (["Playstation 5", "iPhone 14 plus", "Jingle bells", "Curry8"]),
+        (
+            [
+                "Batarang",
+                "Chinese food",
+                "Socks",
+                "Attack on titan volumes",
+                "Detective Conan mangas",
+                "Theater tickets",
+            ]
+        ),
+    ],
+)
+def test_present_loading_process(santa_list):
+    toy_machine = ToyMachine()
+    elf = Elf()
+    sleigh = Sleigh()
+
+    present_loading_process(
+        toy_machine=toy_machine, elf=elf, sleigh=sleigh, santa_list=santa_list
+    )
+
+    assert toy_machine.last_present_made == santa_list[-1]
+    assert elf.carried_present is None
+    for present_to_offer in santa_list:
+        assert present_to_offer in sleigh.list_of_presents
