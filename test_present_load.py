@@ -10,9 +10,9 @@ from present_load import Elf, Sleigh, ToyMachine
 def test_toy_machine_can_make_a_present(present_to_make):
     toy_machine = ToyMachine()
 
-    present_made = toy_machine.make_present(present_to_make)
+    toy_machine.make_present(present_to_make)
 
-    assert present_made == present_to_make
+    assert toy_machine.last_present_made == present_to_make
 
 
 @pytest.mark.parametrize(
@@ -27,12 +27,12 @@ def test_toy_machine_can_make_a_present(present_to_make):
 )
 def test_toy_machine_can_give_a_present_to_elf(present_made):
     toy_machine = ToyMachine()
-    toy_machine.present_made = present_made
+    toy_machine.last_present_made = present_made
     elf = Elf()
 
     toy_machine.give_present(elf)
 
-    assert elf.carried_present == toy_machine.present_made
+    assert elf.carried_present == toy_machine.last_present_made
 
 
 @pytest.mark.parametrize(

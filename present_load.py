@@ -17,10 +17,10 @@ class Elf:
 
 class ToyMachine:
     def __init__(self):
-        self.present_made = None
+        self.last_present_made = None
 
     def make_present(self, present: str) -> str:
-        return present
+        self.last_present_made = present
 
     def give_present(self, elf: Elf):
-        elf.carried_present = self.present_made
+        elf.carried_present = self.last_present_made
