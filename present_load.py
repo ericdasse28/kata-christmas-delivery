@@ -27,7 +27,9 @@ class ToyMachine:
         elf.carried_present = self.last_present_made
 
 
-def present_loading_process(toy_machine, elf, sleigh, santa_list):
+def present_loading_process(
+    toy_machine: ToyMachine, elf: Elf, sleigh: Sleigh, santa_list: list
+):
     for present in santa_list:
         toy_machine.make_present(present)
         toy_machine.give_present(elf)
