@@ -11,7 +11,7 @@ class Elf:
     def __init__(self):
         self.carried_present = None
 
-    def pack_into(self, sleigh: Sleigh):
+    def pack_onto(self, sleigh: Sleigh):
         sleigh.add_present(self.carried_present)
         self.carried_present = None
 
@@ -23,7 +23,7 @@ class ToyMachine:
     def make_present(self, present: str) -> str:
         self.last_present_made = present
 
-    def give_present(self, elf: Elf):
+    def give_present_to(self, elf: Elf):
         elf.carried_present = self.last_present_made
 
 
@@ -32,6 +32,6 @@ def present_loading_process(
 ):
     for present in santa_list:
         toy_machine.make_present(present)
-        toy_machine.give_present(elf)
+        toy_machine.give_present_to(elf)
 
-        elf.pack_into(sleigh)
+        elf.pack_onto(sleigh)

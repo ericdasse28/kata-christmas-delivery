@@ -30,7 +30,7 @@ def test_toy_machine_can_give_a_present_to_elf(present_made):
     toy_machine.last_present_made = present_made
     elf = Elf()
 
-    toy_machine.give_present(elf)
+    toy_machine.give_present_to(elf)
 
     assert elf.carried_present == toy_machine.last_present_made
 
@@ -45,13 +45,13 @@ def test_toy_machine_can_give_a_present_to_elf(present_made):
         "Friends expo",
     ],
 )
-def test_elf_can_pack_present_into_santa_sleigh(present_to_pack):
+def test_elf_can_pack_present_onto_santa_sleigh(present_to_pack):
     elf = Elf()
     elf.carried_present = present_to_pack
     sleigh = Sleigh()
     initial_length = len(sleigh.list_of_presents)
 
-    elf.pack_into(sleigh)
+    elf.pack_onto(sleigh)
 
     assert elf.carried_present is None
     assert len(sleigh.list_of_presents) == initial_length + 1
